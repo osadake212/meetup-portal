@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-lg-offset-8 col-lg-4">
+    <%= link_to "Create a Meetup!", new_meetup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+</div>
+
+<% if @meetups.to_a.empty? %>
+  <div class="row">
+    <div class="col-lg-offset-2 col-lg-8">
+      <h2>No meetups. Please create new Meetup!</h2>
+    </div>
+  </div>
+<% else %>
+  <% @meetups.each do |meetup| %>
+    <hr></hr>
+    <div class="row">
+      <div class="col-lg-offset-2 col-lg-8">
+        <%= render meetup %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+

@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-lg-offset-1 col-lg-offset-10">
+    <% if current_user?(meetup.user) %>
+      <p><%= link_to "delete", meetup, method: :delete, data: { confirm: "You sure?" } %></p>
+    <% end %>
+    <dl class="dl-horizontal">
+      <dt>Title</dt>
+      <dd><%= link_to meetup.title, meetup %></dd>
+
+      <dt>Description</dt>
+      <dd><%= meetup.description %></dd>
+
+      <dt>Format</dt>
+      <dd><%= meetup.format %></dd>
+      
+      <dt>Date</dt>
+      <dd><%= meetup.date %></dd>
+
+      <dt>Start</dt>
+      <dd><%= meetup.start_time %></dd>
+
+      <dt>End</dt>
+      <dd><%= meetup.end_time %></dd>
+    </dl>
+  </div>
+</div>

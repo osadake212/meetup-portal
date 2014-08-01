@@ -1,0 +1,26 @@
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <%= link_to "Portal", root_path, id: "logo", class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Meetups", meetups_path %></li>
+        <li><%= link_to "Users", "#" %></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+        <% if signed_in? %>
+          <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+        <% else %>
+          <li><%= link_to "Sign in", signin_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
