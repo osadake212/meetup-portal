@@ -1,8 +1,5 @@
 <div class="row">
-  <div class="col-lg-offset-1 col-lg-offset-10">
-    <% if current_user?(meetup.user) %>
-      <p><%= link_to "delete", meetup, method: :delete, data: { confirm: "You sure?" } %></p>
-    <% end %>
+  <div class="col-lg-12">
     <dl class="dl-horizontal">
       <dt>Title</dt>
       <dd><%= link_to meetup.title, meetup %></dd>
@@ -21,6 +18,9 @@
 
       <dt>End</dt>
       <dd><%= meetup.end_time %></dd>
+
+      <!-- TODO: show link only for currenet_user -->
+      <dd><%= link_to "delete", meetup, method: :delete, data: { confirm: "You sure?" } %></dd>
     </dl>
   </div>
 </div>
