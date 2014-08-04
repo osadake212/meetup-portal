@@ -1,5 +1,6 @@
 class MeetupsController < ApplicationController
   before_action :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @meetups = Meetup.all
@@ -27,6 +28,12 @@ class MeetupsController < ApplicationController
   end
 
   def update
+    if @meetup.update_attributes(meetup_params)
+      flash[:success] = "Meetup updated!"
+      redirect_to @meetup
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -38,6 +45,18 @@ class MeetupsController < ApplicationController
   private
     def meetup_params
       params.require(:meetup).permit(:title, :description, :format, :date, :start_time, :end_time)
+    end
+
+    # ----- before actions -----
+    def signed_in_user
+      unless signed_in?
+        redirect_to signin_url, warning: "Please sign in."
+      end
+    end
+
+    def correct_user
+      @meetup = current_user.meetups.find_by(id: params[:id])
+      redirect_to root_url if @meetup.nil?
     end
 
 end
