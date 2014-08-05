@@ -16,6 +16,8 @@ RSpec.describe Meetup, :type => :model do
   it { should respond_to(:start_time) }
   it { should respond_to(:end_time) }
   it { should respond_to(:user) }
+  it { should respond_to(:attendances) }
+  it { should respond_to(:attend_users) }
 
   # ----- validation -----
   ## ----- user_id -----

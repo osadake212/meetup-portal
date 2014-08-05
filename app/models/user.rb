@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :meetups
+  has_many :attendances, dependent: :destroy
+  has_many :attend_meetups, through: :attendances, source: :meetup
 
   before_save { self.email = email.downcase }
   before_create :create_remember_roken
@@ -19,6 +21,21 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  # attend meetup
+  def attend_meetup!(meetup)
+    attendances.create!(meetup_id: meetup.id)
+  end
+
+  # cancel to attend meetup
+  def cancel_meetup!(meetup)
+    attendances.find_by(meetup_id: meetup.id).destroy
+  end
+
+  # check attendance
+  def attend_meetup?(meetup)
+    attendances.find_by(meetup_id: meetup.id)
   end
 
   private

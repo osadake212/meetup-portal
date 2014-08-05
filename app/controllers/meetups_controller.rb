@@ -48,12 +48,6 @@ class MeetupsController < ApplicationController
     end
 
     # ----- before actions -----
-    def signed_in_user
-      unless signed_in?
-        redirect_to signin_url, warning: "Please sign in."
-      end
-    end
-
     def correct_user
       @meetup = current_user.meetups.find_by(id: params[:id])
       redirect_to root_url if @meetup.nil?

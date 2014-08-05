@@ -1,0 +1,6 @@
+<%= form_for(current_user.attendances.build(meetup_id: @meetup.id), remote: true) do |f| %>
+  <div>
+    <%= f.hidden_field :meetup_id %>
+  </div>
+  <%= f.submit "Attend", class: "btn btn-lg btn-primary" %>
+<% end %>
