@@ -1,4 +1,4 @@
-<%= form_for(current_user.attendances.build(meetup_id: @meetup.id), remote: true) do |f| %>
+<%= form_for(current_user.attendances.build(meetup_id: @meetup.id)) do |f| %>
   <div>
     <%= f.hidden_field :meetup_id %>
   </div>

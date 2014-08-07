@@ -1,17 +1,17 @@
 <div class="row">
-  <aside class="span4">
-    <section>
+  <div class="col-lg-8">
       <%= render @meetup %>
     </section>
-  </aside>
-
-  <div class="span8">
+  </div>
+  <div class="col-lg-4">
     <%= render 'attend_form' if signed_in? %>
+    <h3>Attend Users</h3>
     <% if @meetup.attend_users.any? %>
-      <h3>Attend Users (<%= @meetup.attend_users.count %>)</h3>
       <% @meetup.attend_users.each do |user| %>
         <div><%= user.name %></div>
       <% end %>
+    <% else %>
+      <div>No user attend this meetup.</div>
     <% end %>
   </div>
 </div>

@@ -12,7 +12,7 @@ class AttendancesController < ApplicationController
 
   def destroy
     @meetup = Attendance.find(params[:id]).meetup
-    current_user.cancel_meetup(@meetup)
+    current_user.cancel_meetup!(@meetup)
     respond_to do |format|
       format.html { redirect_to @meetup }
       format.js

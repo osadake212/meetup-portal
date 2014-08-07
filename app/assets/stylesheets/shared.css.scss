@@ -30,6 +30,10 @@ textarea{
   margin-bottom: 10px;
 }
 
+.fill-width {
+  width: 100%;
+}
+
 /* typegraphy */
 
 h1, h2, h3, h4, h5, h6{
@@ -68,10 +72,6 @@ input, textarea, select, .uneditable-input {
 
 input, textarea, .uneditable-input {
   padding: 10px;
-}
-
-input, textarea {
-  width: 100%;
 }
 
 input {
