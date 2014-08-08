@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-lg-8">
-      <%= render @meetup %>
-    </section>
+    <div class="row">
+      <div class="col-lg-12">
+        <%= render @meetup %>
+      </div>
+    </div>
   </div>
   <div class="col-lg-4">
     <%= render 'attend_form' if signed_in? %>

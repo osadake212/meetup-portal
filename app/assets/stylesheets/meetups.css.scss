@@ -1,3 +1,16 @@
 // Place all the styles related to the Meetups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$component-margin: 10px;
+
+dl.dl-horizontal {
+  dt {
+    text-align: left;
+  }
+  dd {
+    margin-top: $component-margin;
+    margin-bottom: $component-margin;
+  }
+}
+
