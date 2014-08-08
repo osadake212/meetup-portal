@@ -12,9 +12,5 @@
  *
  *= require_self
  *= require_bootstrap
- *= require shared
- *= require meetups
- *= require static_pages
- *= require sessions
- *= require users
+ *= require_tree .
  */
