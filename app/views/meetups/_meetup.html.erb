@@ -2,11 +2,11 @@
   <dt>Title</dt>
   <dd><%= link_to meetup.title, meetup %></dd>
 
-  <dt>Description</dt>
-  <dd><%= meetup.description %></dd>
+  <dt>Short Desctiption</dt>
+  <dd><%= meetup.short_description %></dd>
 
-  <dt>Format</dt>
-  <dd><%= meetup.format %></dd>
+  <dt>Description</dt>
+  <dd><%= markdown meetup.description %></dd>
   
   <dt>Date</dt>
   <dd><%= meetup.date %></dd>
@@ -18,6 +18,6 @@
   <dd><%= meetup.end_time %></dd>
 
   <% if current_user?(meetup.user) %>
-    <dd><%= link_to "edit", meetup, method: :post %> | <%= link_to "delete", meetup, method: :delete, data: { confirm: "You sure?" } %></dd>
+    <dd><%= link_to "edit", edit_meetup_path(meetup) %> | <%= link_to "delete", meetup, method: :delete, data: { confirm: "You sure?" } %></dd>
   <% end %>
 </dl>

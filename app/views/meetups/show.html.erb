@@ -11,7 +11,7 @@
     <h3>Attend Users</h3>
     <% if @meetup.attend_users.any? %>
       <% @meetup.attend_users.each do |user| %>
-        <div><%= user.name %></div>
+        <div><%= link_to user.name, user_path(user) %></div>
       <% end %>
     <% else %>
       <div>No user attend this meetup.</div>

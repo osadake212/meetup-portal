@@ -27,14 +27,20 @@ ActiveRecord::Schema.define(version: 20140805032001) do
   create_table "meetups", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
+    t.text     "short_description"
     t.text     "description"
-    t.string   "format"
     t.date     "date"
     t.time     "start_time"
     t.time     "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "meetups", ["date"], name: "index_meetups_on_date"
+  add_index "meetups", ["end_time"], name: "index_meetups_on_end_time"
+  add_index "meetups", ["short_description"], name: "index_meetups_on_short_description"
+  add_index "meetups", ["start_time"], name: "index_meetups_on_start_time"
+  add_index "meetups", ["title"], name: "index_meetups_on_title"
 
   create_table "users", force: true do |t|
     t.string   "name"
