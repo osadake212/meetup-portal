@@ -10,7 +10,7 @@
     <h2>Attend Meetups</h2>
     <% if @user.attend_meetups %>
       <% @user.attend_meetups.each do |meetup| %>
-        <%= render 'meetups/meetup', meetup: meetup %>
+        <%= render 'meetups/short_meetup', meetup: meetup %>
       <% end %>
     <% else %>
       <div>No meetups.</div>

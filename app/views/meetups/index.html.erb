@@ -13,7 +13,7 @@
 <% else %>
   <% @meetups.each do |meetup| %>
     <hr></hr>
-    <%= render meetup %>
+    <%= render 'meetups/short_meetup', meetup: meetup %>
   <% end %>
 <% end %>
 
