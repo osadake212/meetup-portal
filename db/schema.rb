@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140805032001) do
   create_table "meetups", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.text     "short_description"
+    t.string   "short_description"
     t.text     "description"
     t.date     "date"
     t.time     "start_time"
