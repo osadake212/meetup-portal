@@ -11,7 +11,7 @@ class MeetupsController < ApplicationController
   end
 
   def new
-    @meetup = Meetup.new
+    @meetup = Meetup.new(date: Date.current, start_time: Time.now, end_time: Time.now + (60 * 60))
   end
 
   def create
