@@ -11,7 +11,7 @@ class MeetupsController < ApplicationController
   end
 
   def new
-    @meetup = Meetup.new(date: Date.current, start_time: Time.now, end_time: Time.now + (60 * 60))
+    @meetup = Meetup.new(start_date: DateTime.now, end_date: DateTime.now + 1.hour)
   end
 
   def create
@@ -44,7 +44,7 @@ class MeetupsController < ApplicationController
 
   private
     def meetup_params
-      params.require(:meetup).permit(:title, :short_description, :description, :date, :start_time, :end_time)
+      params.require(:meetup).permit(:title, :short_description, :description, :start_date, :end_date)
     end
 
     # ----- before actions -----

@@ -11,14 +11,11 @@
       <%= f.label :description, class: "fill-width" %>
       <%= f.text_area :description, class: "fill-width" %>
 
-      <%= f.label :date, class: "fill-width" %>
-      <%= f.date_select :date, class: "fill-width" %>
+      <%= f.label :start_date, class: "fill-width" %>
+      <%= f.datetime_select :start_date, class: "fill-width" %>
 
-      <%= f.label :start_time, class: "fill-width" %>
-      <%= f.time_select :start_time, class: "fill-width" %>
-
-      <%= f.label :end_time, class: "fill-width" %>
-      <%= f.time_select :end_time, class: "fill-width" %>
+      <%= f.label :end_date, class: "fill-width" %>
+      <%= f.datetime_select :end_date, class: "fill-width" %>
     </div>
   </div>
 

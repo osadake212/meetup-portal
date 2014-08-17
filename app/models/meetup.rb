@@ -7,5 +7,6 @@ class Meetup < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 50 }
   validates :short_description, presence: true, length: { maximum: 100 }
   validates :description, length: { maximum: 1000 }
-  validates :date, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 end

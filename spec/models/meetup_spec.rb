@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe Meetup, :type => :model do
   before do
     @user = FactoryGirl.create(:user)
-    @meetup = @user.meetups.build(title: "Sample Meetup", short_description: "Sample Meetups's Short Description", description: "Sample Meetup's description.", date: DateTime.now.to_date, start_time: Time.now, end_time: Time.now)
+    @meetup = @user.meetups.build(title: "Sample Meetup", short_description: "Sample Meetups's Short Description", description: "Sample Meetup's description.", start_date: DateTime.now, end_date: DateTime.now)
   end
 
   subject { @meetup }
@@ -12,9 +12,8 @@ RSpec.describe Meetup, :type => :model do
   it { should respond_to(:title) }
   it { should respond_to(:short_description) }
   it { should respond_to(:description) }
-  it { should respond_to(:date) }
-  it { should respond_to(:start_time) }
-  it { should respond_to(:end_time) }
+  it { should respond_to(:start_date) }
+  it { should respond_to(:end_date) }
   it { should respond_to(:user) }
   it { should respond_to(:attendances) }
   it { should respond_to(:attend_users) }
@@ -54,9 +53,15 @@ RSpec.describe Meetup, :type => :model do
     it { should_not be_valid }
   end
 
-  ## ----- date -----
-  describe "when date is not present" do
-    before { @meetup.date = nil }
+  ## ----- start_date -----
+  describe "when start_date is not present" do
+    before { @meetup.start_date = nil }
+    it { should_not be_valid }
+  end
+
+  ## ----- end_date -----
+  describe "when end_date is not present" do
+    before { @meetup.end_date = nil }
     it { should_not be_valid }
   end
 end

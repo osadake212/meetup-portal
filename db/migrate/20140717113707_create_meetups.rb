@@ -5,17 +5,15 @@ class CreateMeetups < ActiveRecord::Migration
       t.string :title
       t.string :short_description
       t.text :description
-      t.date :date
-      t.time :start_time
-      t.time :end_time
+      t.datetime :start_date
+      t.datetime :end_date
 
       t.timestamps
     end
 
     add_index :meetups, :title
     add_index :meetups, :short_description
-    add_index :meetups, :date
-    add_index :meetups, :start_time
-    add_index :meetups, :end_time
+    add_index :meetups, :start_date
+    add_index :meetups, :end_date
   end
 end
