@@ -3,7 +3,7 @@ class MeetupsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @meetups = Meetup.all
+    @meetups = Meetup.paginate(page: params[:page], per_page: 5).order('start_date DESC')
   end
 
   def show

@@ -15,5 +15,6 @@
     <hr></hr>
     <%= render 'meetups/short_meetup', meetup: meetup %>
   <% end %>
+  <%= will_paginate @meetups %>
 <% end %>
 
