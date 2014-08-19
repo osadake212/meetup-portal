@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805032001) do
+ActiveRecord::Schema.define(version: 20140819234702) do
 
   create_table "attendances", force: true do |t|
     t.integer  "user_id"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20140805032001) do
   add_index "meetups", ["short_description"], name: "index_meetups_on_short_description"
   add_index "meetups", ["start_date"], name: "index_meetups_on_start_date"
   add_index "meetups", ["title"], name: "index_meetups_on_title"
+
+  create_table "microposts", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "microposts", ["content"], name: "index_microposts_on_content"
+  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
