@@ -1,0 +1,9 @@
+<% if @users.to_a.empty? %>
+  There is no user. Please <%= link_to "Sign up!", signup_path %>
+<% else %>
+  <% @users.each do |user| %>
+    <hr/>
+    <%= render 'users/user', user: user %>
+  <% end %>
+  <%= will_paginate @users %>
+<% end %>
