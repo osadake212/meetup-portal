@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :meetups
   has_many :attendances, dependent: :destroy
   has_many :attend_meetups, through: :attendances, source: :meetup
+  has_many :microposts
 
   before_save { self.email = email.downcase }
   before_create :create_remember_roken
