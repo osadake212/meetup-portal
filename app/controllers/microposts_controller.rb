@@ -3,9 +3,23 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def create
+    @micropost = current_user.micropost.build(micropost_params)
+    if @micropost.save
+      flash[:success] = "Micropost created!"
+    else
+      flash[:error] = "Failed to create Micropost."
+    end
+
+    if request.referer
+      refirect_to(:back)
+    else
+      redirect_to root_url
+    end
   end
 
   def destroy
+    @micropost.destroy
+    redirect_to current_user
   end
 
   private
@@ -13,6 +27,7 @@ class MicropostsController < ApplicationController
       params.require(:micropost).permit(:content)
     end
 
+    # ----- before actions -----
     def correct_user
       @micropost = current_user.microposts.find_by(id: params[:id])
       redirect_to root_url if @micropost.nil?
