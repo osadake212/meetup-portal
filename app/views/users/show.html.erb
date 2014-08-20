@@ -4,6 +4,10 @@
       <%= link_to @user.name, @user %>
     </h2>
     <div><%= @user.email %></div>
+    <% if @micropost %>
+      <hr/>
+      <%= render 'shared/micropost_form' %>
+    <% end %>
   </div>
 
   <div class="col-lg-8">

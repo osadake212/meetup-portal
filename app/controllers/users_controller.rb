@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if current_user? @user
+      @micropost = @user.microposts.build
+    end
   end
 
   def new
