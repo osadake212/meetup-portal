@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140819234702) do
   end
 
   add_index "microposts", ["content"], name: "index_microposts_on_content"
+  add_index "microposts", ["user_id", "content"], name: "index_microposts_on_user_id_and_content"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
 
   create_table "users", force: true do |t|

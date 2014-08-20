@@ -9,5 +9,6 @@ class CreateMicroposts < ActiveRecord::Migration
 
     add_index :microposts, :user_id
     add_index :microposts, :content
+    add_index :microposts, [:user_id, :content]
   end
 end
