@@ -8,6 +8,15 @@
       <hr/>
       <%= render 'shared/micropost_form' %>
     <% end %>
+    <hr/>
+    <div>microposts</div>
+    <% if @feeds %>
+      <% @feeds.each do |feed| %>
+        <%= render 'microposts/micropost', micropost: feed%>
+      <% end %>
+    <% else %>
+      <div>no post.</div>
+    <% end %>
   </div>
 
   <div class="col-lg-8">

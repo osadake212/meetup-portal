@@ -8,8 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @feeds = @user.microposts
     if current_user? @user
-      @micropost = @user.microposts.build
+      @micropost = current_user.microposts.build
     end
   end
 
