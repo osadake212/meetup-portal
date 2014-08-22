@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :meetups
   resources :attendances, only: [:create, :destroy]
+  resources :microposts, only: [:create, :destroy]
 
   # static pages
   root 'static_pages#home'

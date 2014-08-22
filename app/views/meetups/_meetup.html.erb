@@ -9,10 +9,10 @@
   <dd><%= markdown meetup.description %></dd>
 
   <dt>Start Date</dt>
-  <dd><%= meetup.start_date %></dd>
+  <dd><%= date_str_jp(meetup.start_date) %></dd>
 
   <dt>End Date</dt>
-  <dd><%= meetup.end_date %></dd>
+  <dd><%= date_str_jp(meetup.end_date) %></dd>
 
   <% if current_user?(meetup.user) %>
     <dd><%= link_to "edit", edit_meetup_path(meetup) %> | <%= link_to "delete", meetup, method: :delete, data: { confirm: "You sure?" } %></dd>
