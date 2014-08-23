@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <h1>Welcome to the Portal</h1>
-  <h2>This is the home page for the Portal</h2>
+  <h2>This is the Portal for Grate Meetups!</h2>
   <% unless signed_in? %>
     <%= link_to "Sign up!", '/signup', class: "btn btn-lg btn-primary"%>
   <% end %>
@@ -14,7 +14,7 @@
       No meetups.
     <% else %>
       <% @meetups.each do |meetup| %>
-        <%= render 'meetups/meetup', meetup: meetup%>
+        <%= render 'meetups/short_meetup', meetup: meetup%>
       <% end %>
     <% end %>
   </div>
