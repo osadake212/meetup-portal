@@ -5,3 +5,28 @@
     <%= link_to "Sign up!", '/signup', class: "btn btn-lg btn-primary"%>
   <% end %>
 </div>
+
+<div class="row">
+  <div class="col-lg-7">
+    <p>Latest Meetups</p>
+    <hr/>
+    <% if @meetups.to_a.empty? %>
+      No meetups.
+    <% else %>
+      <% @meetups.each do |meetup| %>
+        <%= render 'meetups/meetup', meetup: meetup%>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-lg-5">
+    <p>Latest Posts</p>
+    <hr/>
+    <% if @microposts.to_a.empty? %>
+      No posts.
+    <% else %>
+      <% @microposts.each do |micropost| %>
+       <%= render 'microposts/micropost', micropost: micropost%>
+      <% end %>
+    <% end %>
+  </div>
+</div>
