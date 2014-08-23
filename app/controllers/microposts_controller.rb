@@ -7,7 +7,7 @@ class MicropostsController < ApplicationController
     if @micropost.save
       flash[:success] = "Micropost created!"
     else
-      flash[:error] = "Failed to create Micropost."
+      flash[:danger] = "Failed to create Micropost."
     end
 
     if request.referer
