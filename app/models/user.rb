@@ -42,6 +42,18 @@ class User < ActiveRecord::Base
     attendances.find_by(meetup_id: meetup.id)
   end
 
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
+
   private
     def create_remember_roken
       self.remember_token = User.encrypt(User.new_remember_token)
