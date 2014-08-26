@@ -1,0 +1,15 @@
+<div class="title"><%= @title %></div>
+<div class="row">
+  <div class="col-lg-4">
+    <!-- user profile link -->
+    <!-- user microposts -->
+  </div>
+  <div class="col-lg-8">
+    <%= render 'shared/stats' %>
+    <% if @users.any? %>
+      <% @users.each do |user| %>
+        <p><%= link_to "#{user.name}", user %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
