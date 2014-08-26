@@ -5,6 +5,7 @@
     </h2>
     <div><%= @user.email %></div>
     <%= render 'shared/stats' %>
+    <%= render 'follow_form' if signed_in? %>
     <% if @micropost %>
       <hr/>
       <%= render 'shared/micropost_form' %>
