@@ -1,15 +1,16 @@
-<div class="title"><%= @title %></div>
 <div class="row">
   <div class="col-lg-4">
-    <!-- user profile link -->
-    <!-- user microposts -->
+    <p><%= link_to "#{@user.name}", @user %></p>
+    <%= render 'shared/stats' %>
   </div>
   <div class="col-lg-8">
-    <%= render 'shared/stats' %>
+    <h3><%= @title %></h3>
     <% if @users.any? %>
       <% @users.each do |user| %>
         <p><%= link_to "#{user.name}", user %></p>
       <% end %>
+    <% else %>
+      <p>No users.</p>
     <% end %>
   </div>
 </div>
