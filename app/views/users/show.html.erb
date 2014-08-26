@@ -4,6 +4,7 @@
       <%= link_to @user.name, @user %>
     </h2>
     <div><%= @user.email %></div>
+    <%= render 'shared/stats' %>
     <% if @micropost %>
       <hr/>
       <%= render 'shared/micropost_form' %>
