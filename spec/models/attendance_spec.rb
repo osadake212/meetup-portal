@@ -13,4 +13,21 @@ describe Attendance do
   subject { attendance }
 
   it { should be_valid }
+  it { should respond_to(:user_id) }
+  it { should respond_to(:meetup_id) }
+  it { attendance.user_id.should eq user.id }
+  it { attendance.meetup_id.should eq meetup.id }
+
+  # ----- validation -----
+  ## ----- user_id -----
+  describe "when user_id is not present" do
+    before { attendance.user_id = nil }
+    it { should_not be_valid }
+  end
+
+  ## ----- meetup_id -----
+  describe "when meetup_id is not present" do
+    before { attendance.meetup_id = nil }
+    it { should_not be_valid }
+  end
 end
