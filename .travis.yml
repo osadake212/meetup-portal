@@ -1,0 +1,13 @@
+language: ruby
+bundler_args: --without development --path vendor/bandle
+rvm:
+  - 2.0.0-p451
+script:
+  - bundle exec rake db:migrate:reset 
+  - bundle exec rake test:prepare
+  - bundle exec rspec spec
+gemfile:
+  - Gemfile
+branches:
+  only:
+    - master
