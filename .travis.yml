@@ -2,8 +2,10 @@ language: ruby
 bundler_args: --without development --path vendor/bandle
 rvm:
   - 2.0.0-p451
+before_script:
+  - cp config/database.yml.sample config/database.yml
 script:
-  - bundle exec rake db:migrate:reset 
+  - bundle exec rake db:migrate:reset
   - bundle exec rake test:prepare
   - bundle exec rspec spec
 gemfile:
@@ -11,3 +13,13 @@ gemfile:
 branches:
   only:
     - master
+    - development
+deploy:
+  provider: heroku
+  api_key:
+    secure: uPkEoAhzeZzR83EDkfTskYwmjl7nWpBOZCePOtMAfMJV9kzMoI9Wq2aM9/HnU6JQ/hA15ipUROUV4D6L/zXH9dmB6p0y9eOyVkSaMx+sAP+GoHUFJEvNPpg6oU9Z/tmp872j3W7ZQOVwMGL7d0w0rnOQQi5f7kNm9pyxoHjBCsQ=
+  app:
+    master: meetup-portal
+  run:
+    - bundle exec rake db:migrate RAILS_ENV=production
+    - bundle exec rake assets:precompile RAILS_ENV=production
