@@ -13,6 +13,17 @@ RSpec.describe User, :type => :model do
   it { should respond_to(:meetups) }
   it { should respond_to(:attendances) }
   it { should respond_to(:attend_meetups) }
+  it { should respond_to(:followed_users) }
+  it { should respond_to(:followers) }
+  it { should respond_to(:relationships) }
+  it { should respond_to(:reverse_relationships) }
+
+  it { should respond_to(:attend_meetup!) }
+  it { should respond_to(:cancel_meetup!) }
+  it { should respond_to(:attend_meetup?) }
+  it { should respond_to(:following?) }
+  it { should respond_to(:follow!) }
+  it { should respond_to(:unfollow!) }
 
   it { should be_valid }
 
@@ -68,6 +79,31 @@ RSpec.describe User, :type => :model do
   describe "with too short password" do
     before { @user.password = @user.password_confirmation = 'a' * 5 }
     it { should_not be_valid }
+  end
+
+  # spec
+
+  describe "following" do
+    let(:other_user) { FactoryGirl.create(:user) }
+    before do
+      @user.save
+      @user.follow!(other_user)
+    end
+
+    it { should be_following(other_user) }
+    it { @user.followed_users.should include(other_user) }
+
+    describe "followed user" do
+      subject { other_user }
+      it { other_user.followers.should include(@user) }
+    end
+
+    describe "and unfollowing" do
+      before { @user.unfollow!(other_user) }
+
+      it { should_not be_following(other_user) }
+      it { @user.followed_users.should_not include(other_user) }
+    end
   end
 
 end
