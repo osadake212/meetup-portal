@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140824235959) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attendances", force: true do |t|
     t.integer  "user_id"
     t.integer  "meetup_id"
@@ -20,9 +23,9 @@ ActiveRecord::Schema.define(version: 20140824235959) do
     t.datetime "updated_at"
   end
 
-  add_index "attendances", ["meetup_id"], name: "index_attendances_on_meetup_id"
-  add_index "attendances", ["user_id", "meetup_id"], name: "index_attendances_on_user_id_and_meetup_id", unique: true
-  add_index "attendances", ["user_id"], name: "index_attendances_on_user_id"
+  add_index "attendances", ["meetup_id"], name: "index_attendances_on_meetup_id", using: :btree
+  add_index "attendances", ["user_id", "meetup_id"], name: "index_attendances_on_user_id_and_meetup_id", unique: true, using: :btree
+  add_index "attendances", ["user_id"], name: "index_attendances_on_user_id", using: :btree
 
   create_table "meetups", force: true do |t|
     t.integer  "user_id"
@@ -35,10 +38,10 @@ ActiveRecord::Schema.define(version: 20140824235959) do
     t.datetime "updated_at"
   end
 
-  add_index "meetups", ["end_date"], name: "index_meetups_on_end_date"
-  add_index "meetups", ["short_description"], name: "index_meetups_on_short_description"
-  add_index "meetups", ["start_date"], name: "index_meetups_on_start_date"
-  add_index "meetups", ["title"], name: "index_meetups_on_title"
+  add_index "meetups", ["end_date"], name: "index_meetups_on_end_date", using: :btree
+  add_index "meetups", ["short_description"], name: "index_meetups_on_short_description", using: :btree
+  add_index "meetups", ["start_date"], name: "index_meetups_on_start_date", using: :btree
+  add_index "meetups", ["title"], name: "index_meetups_on_title", using: :btree
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -47,9 +50,9 @@ ActiveRecord::Schema.define(version: 20140824235959) do
     t.datetime "updated_at"
   end
 
-  add_index "microposts", ["content"], name: "index_microposts_on_content"
-  add_index "microposts", ["user_id", "content"], name: "index_microposts_on_user_id_and_content"
-  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+  add_index "microposts", ["content"], name: "index_microposts_on_content", using: :btree
+  add_index "microposts", ["user_id", "content"], name: "index_microposts_on_user_id_and_content", using: :btree
+  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
@@ -58,9 +61,9 @@ ActiveRecord::Schema.define(version: 20140824235959) do
     t.datetime "updated_at"
   end
 
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140824235959) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
