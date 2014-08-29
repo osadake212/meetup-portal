@@ -1,5 +1,5 @@
 language: ruby
-bundler_args: --without development --path vendor/bandle
+bundler_args: --without production
 rvm:
   - 2.0.0-p451
 before_script:
