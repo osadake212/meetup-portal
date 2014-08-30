@@ -20,4 +20,4 @@ deploy:
     secure: uPkEoAhzeZzR83EDkfTskYwmjl7nWpBOZCePOtMAfMJV9kzMoI9Wq2aM9/HnU6JQ/hA15ipUROUV4D6L/zXH9dmB6p0y9eOyVkSaMx+sAP+GoHUFJEvNPpg6oU9Z/tmp872j3W7ZQOVwMGL7d0w0rnOQQi5f7kNm9pyxoHjBCsQ=
   app:
     master: meetup-portal
-  run: "rake db:migrate"
+  run: "bundle exec rake db:migrate"
