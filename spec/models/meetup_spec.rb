@@ -59,9 +59,19 @@ RSpec.describe Meetup, :type => :model do
     it { should_not be_valid }
   end
 
+  describe "when start_date is before now" do
+    before { @meetup.start_date = DateTime.now - 1.hour }
+    it { should_not be_valid }
+  end
+
   ## ----- end_date -----
   describe "when end_date is not present" do
     before { @meetup.end_date = nil }
+    it { should_not be_valid }
+  end
+
+  describe "when end_date is before start_date" do
+    before { @meetup.end_date = @meetup.start_date - 1.hour }
     it { should_not be_valid }
   end
 end
