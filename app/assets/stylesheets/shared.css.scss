@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import "compass/reset";
+@import "compass";
 
 /* mixings, variables, etc. */
 
@@ -8,10 +10,22 @@
   box-sizing: border-box;
 }
 
+@mixin panel_base {
+  margin: 10px;
+  padding: 10px;
+}
+
+$sakura: #fef4f4;
+$sakuranezu: #e9dfe5;
+
 /* universal */
 
 html{
   overflow-y: scroll;
+}
+
+body {
+  background-color: $sakura;
 }
 
 section {
@@ -32,6 +46,31 @@ textarea{
 
 .fill-width {
   width: 100%;
+}
+
+.panel-main {
+  @include border-radius();
+  @include panel_base;
+  padding: 50px;
+  background-color: $sakuranezu;
+}
+
+.panel-meetup {
+  @include border-radius();
+  @include panel_base;
+  background-color: $sakuranezu;
+}
+
+.panel-micropost {
+  @include border-radius();
+  @include panel_base;
+  background-color: $sakuranezu;
+}
+
+.panel-user {
+  @include border-radius();
+  @include panel_base;
+  background-color: $sakuranezu;
 }
 
 /* typegraphy */
