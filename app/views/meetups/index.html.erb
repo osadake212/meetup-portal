@@ -11,10 +11,11 @@
     </div>
   </div>
 <% else %>
-  <% @meetups.each do |meetup| %>
-    <hr></hr>
-    <%= render 'meetups/short_meetup', meetup: meetup %>
-  <% end %>
-  <%= will_paginate @meetups %>
+  <div class="panel-meetup">
+    <% @meetups.each do |meetup| %>
+      <hr></hr>
+      <%= render 'meetups/short_meetup', meetup: meetup %>
+    <% end %>
+    <%= will_paginate @meetups %>
+  </div>
 <% end %>
-

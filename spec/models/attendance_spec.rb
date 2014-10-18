@@ -4,7 +4,7 @@ describe Attendance do
 
   let(:user) { FactoryGirl.create(:user) }
   let(:meetup) do
-    meetup = user.meetups.build(title: "Sample Meetup", short_description: "Sample Meetups's Short Description",description: "Sample Meetup's description.", start_date: DateTime.now, end_date: DateTime.now)
+    meetup = user.meetups.build(title: "Sample Meetup", short_description: "Sample Meetups's Short Description",description: "Sample Meetup's description.", start_date: DateTime.now + 1.hour, end_date: DateTime.now + 2.hour)
     meetup.save
     meetup
   end
