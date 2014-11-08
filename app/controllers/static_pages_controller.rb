@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @meetups = Meetup.limit(5)
-    @microposts = Micropost.limit(10)
+    @meetups = Meetup.where('start_date >= ?', DateTime.now).order('start_date DESC').limit(5)
+    @microposts = Micropost.order('created_at DESC').limit(10)
   end
 
   def about
