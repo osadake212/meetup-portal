@@ -1,14 +1,14 @@
 <dl class="dl-horizontal">
   <dt>Title</dt>
-  <dd><%= link_to meetup.title, meetup %></dd>
+  <dd class="short-meetup-title"><%= link_to meetup.title, meetup %></dd>
 
   <dt>Short Desctiption</dt>
-  <dd><%= meetup.short_description %></dd>
+  <dd class="short-meetup-short-description"><%= meetup.short_description %></dd>
 
   <dt>Start Date</dt>
-  <dd><%= date_str_jp(meetup.start_date) %></dd>
+  <dd class="short-meetup-start-date"><%= date_str_jp(meetup.start_date) %></dd>
 
   <dt>End Date</dt>
-  <dd><%= date_str_jp(meetup.end_date) %></dd>
+  <dd class="short-meetup-end-date"><%= date_str_jp(meetup.end_date) %></dd>
 
 </dl>

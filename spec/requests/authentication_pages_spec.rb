@@ -21,7 +21,7 @@ describe "AuthenticationPages" do
 
       it { should have_content('Sign in') }
       it { should have_selector('div.alert.alert-warning', text: 'Invalid') }
-    
+
       describe "after visiting another page" do
         before { click_link "Portal" }
         it { should_not have_selector("div.alert.alert-warning") }
